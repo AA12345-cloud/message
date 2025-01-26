@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Message Exchange</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 20px;
+      background-color: #f0f8ff;
+      position: relative;
+    }
+    h1 {
+      font-size: 36px;
+    }
+    textarea {
+      width: 100%;
+      max-width: 500px;
+      height: 100px;
+      font-size: 18px;
+    }
+    button {
+      margin: 10px;
+      padding: 15px 30px;
+      font-size: 20px;
+      cursor: pointer;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    p {
+      font-size: 24px;
+      margin-top: 20px;
+    }
+    #response {
+      font-size: 60px;
+      font-weight: bold;
+      color: #ff6347;
+      margin-top: 20px;
+      z-index: 9999;
+      position: relative;
+    }
+  </style>
+</head>
+<body>
+  <h1>Бір-біріңізге тілек жазыңыз</h1>
+  <textarea id="message" placeholder="осында жазыңыз... 😊"></textarea>
+  <br>
+  <button onclick="submitMessage()">Тілекті басқа адамға жіберіңіз 💌</button>
+  <button onclick="getRandomMessage()">Батырманы басыңыз 🎆</button>
+  <p id="response"></p>
+
+  <script>
+    const messages = [];
+
+    function submitMessage() {
+      const message = document.getElementById('message').value;
+      if (message.trim()) {
+        messages.push(message);
+        alert('Message submitted! 😊');
+        document.getElementById('message').value = '';
+      } else {
+        alert('Please write a message! 📝');
+      }
+    }
+
+    function getRandomMessage() {
+      const responseElement = document.getElementById('response');
+      
+      if (messages.length > 0) {
+        const randomIndex = Math.floor(Math.random() * messages.length);
+        responseElement.innerText = messages[randomIndex];
+      } else {
+        responseElement.innerText = 'No messages available! 😢';
+      }
+    }
+  </script>
+</body>
+</html>
